@@ -23,6 +23,6 @@ requests:
     matchers:
       - type: dsl
         dsl:
-          - "contains(body_1, 's:')"
-          - "status_code_1 == 200 || status_code_1 == 304"
+          - "contains(body, 's:')"
+          - "status_code == 200 || status_code == 304"
         condition: and
